@@ -165,27 +165,5 @@ namespace ProduktKatalogMVC.Controllers
 
             return jsonProducts;
         }
-
-        private bool ProductAlreadyExist(int id)
-        {
-            //Set json file info
-            string filename = "products.json";
-            string filePath = Server.MapPath("/Content/" + filename);
-
-            string jsonString = System.IO.File.ReadAllText(filePath);
-
-            List<Product> jsonProducts = JsonConvert.DeserializeObject<List<Product>>(jsonString);
-
-
-            foreach (var item in jsonProducts)
-            {
-                if (item.id == id)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
     }
 }
